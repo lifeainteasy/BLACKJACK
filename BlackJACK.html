@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-16">
+        <style>
+          
+            body{
+                border-bottom: 1px solid black;
+                height: 400px;
+                background-image: url('welcome.png');
+            }
+        
+            #dealer{
+                position: absolute; left: 650px; bottom: 550px;
+            }
+            #player{
+                position: absolute; left: 650px; bottom: 5px;
+            }
+            
+
+        </style>
+        <title>☆WELCOME TO BLACKJACK!★</title>
+    </head>
+
+    <body>
+        <input type = "text" value="가지고 있는 코인 : "style="background-color:transparent;border:0" disabled> 
+        <input type="text" id = "RCoin" value="1000" style="background-color:transparent;border:0;text-align: left" disabled>
+        <br>
+       
+
+         <input type="text" value="배팅금액 : " style="width: 60px;background-color:transparent;border:0;text-align:left;" disabled>
+         <input type="text" onclick="reset()" id="bet" value="" style="text-align:left;">
+         <input type="button"onclick="gameStart()" value="배팅하기">
+         
+        <div id = "dealer">
+            <input type="text"  id="DCard"  style="width: 150px; height: 200px ;" disabled>
+            <input type="text"  id="DCardCounting" disabled> 
+            <input type = "text"id="HowMuchYOUbet" value ="배팅금액" style="position: absolute; left: 500px; bottom: 0px; width: 330px; height: 200px; padding:90px 280px 50px 100px;font-size: 50px">
+            <input type = "text"id="1" value ="" style="background-color:transparent;border:0; position: absolute; left: 500px; bottom: 0px; width: 330px; height: 200px; padding:50px 00px 0px 150px;font-size: 40px;text-align: left;">
+
+        </div>
+        <div id = "player" >
+                
+               <input type="text"  id="CARD" style="width: 150px; height: 200px ;" disabled> 
+              
+               <input type="text"  id="CardCounting" disabled>
+            
+               <input type="button" onclick="Hit()" value="HIT">    
+
+               <input type="button"  onclick="Split()" value = "STAY"  style="margin: 100px;"> 
+
+        </div>
+    </body>
+    <script>
+        var card =[1,2,3,4,5,6,7,8,9,10,10,10,10];
+        var player_card = 0;
+        var Dplayer_card = 0;
+        var moment_counting = 0;
+        var Dmoment_counting = 0;
+        var dealer_card = 0;
+        var check  = 0;
+        var shape  = '';
+        var Dshape = '';
+        var cardnumber = 0;
+        var Dcardnumber = 0;
+        var ace = 0;
+        var Dace = 0;
+        var betting = 0;
+        var num = 0;
+        var i = 0;
+        var coin = 1000;
+        var moment_coin = 0;
+        var Tc = ['♠','♥','♣','◆'];
+       
+        function gameStart()
+        {
+
+            moment_coin -= document.getElementById('bet').value;
+            if(moment_coin != 'NaN') 
+            {
+                reset();
+            }
+            else if( moment_coin == 'NaN')
+            {
+                coin -=moment_coin;
+                if(coin < 0)
+            {
+                coin += document.getElementById('bet').value;
+                document.getElementById('bet').value = '너무많은 금액을 입력하셨습니다.';
+                reset();
+            } 
+            else {
+
+                betting = document.getElementById('bet').value*1;
+                document.getElementById('RCoin').value = coin;
+
+
+
+           if(betting !=0) 
+                {
+                            cardCounting();
+
+                       }   
+             else
+             {
+                 document.getElementById('bet').value='배팅금액을 입력해주세요!';
+                }
+            }
+            }
+         
+             
+            
+            
+      
+
+        }
+            
+
+            function put(){
+                if(shape!='')
+                {
+                    document.getElementById('CARD').value += shape;
+                }
+                else 
+                {
+                    document.getElementById('CARD').value +=  moment_counting; 
+                }
+                document.getElementById('CARD').value += ' ';
+            }
+
+            
+            function Dput()
+            {
+
+                if(shape!='')
+                {
+                    document.getElementById('DCard').value += shape;
+                }
+
+                else 
+                {
+                    document.getElementById('DCard').value +=  moment_counting; 
+                }
+            
+                document.getElementById('DCard').value += ' ';
+
+            }
+
+            function cardCounting(){
+                if(check === 0)
+                {
+                    check = 1;
+                    Hit();
+                    Hit();
+                    dealercard();
+                    document.getElementById('CardCounting').value =player_card*1;
+                    blackJack();
+                }
+            }
+
+            function  Hit()
+            {
+                if(check === 1)
+                {
+                    
+                    Cardseletor();
+                    JKQ();
+                    put();
+                    shape = '';   
+                    document.getElementById('CardCounting').value =player_card*1;
+
+                }
+               if(21<player_card) 
+               {
+                    check = 0;
+                    document.getElementById('CardCounting').value = "버스트입니다. 다시하실거면 배팅을 해주세요!";
+               }
+            }
+
+            function Cardseletor()
+            {
+                cardnumber = Math.floor(Math.random() * 13);
+                moment_counting = card[cardnumber];
+                if(moment_counting == 1)
+                {
+                    moment_counting = 11;
+                    player_card +=moment_counting*1;
+                    ace++;
+                    if(21<player_card)
+                   { 
+                        
+                        player_card -= 10;
+                        ace--;
+                   }
+                
+                }
+                else if(ace != 0)
+                {
+                    player_card += moment_counting*1;
+
+                    if(21<player_card)
+                   { 
+                        
+                        player_card -= 10;
+                        ace--;
+                   }
+                }
+                else    player_card +=moment_counting*1;
+
+            }
+
+            function DCardseletor()
+            {
+                cardnumber = Math.floor(Math.random() * 13);
+                moment_counting = card[cardnumber];
+                if(moment_counting == 1)
+                {
+                    moment_counting = 11;
+                    Dplayer_card +=moment_counting*1;
+                    Dace++;
+                    if(21<Dplayer_card)
+                   { 
+
+                        Dplayer_card -= 10;
+                        Dace--;
+
+                   }
+                
+                }
+                else if(Dace != 0)
+                {
+                    Dplayer_card +=moment_counting*1;
+
+                    if(21<Dplayer_card)
+                   { 
+                        
+                        Dplayer_card -= 10;
+                        Dace--;
+                   }
+                }
+                else   Dplayer_card += moment_counting*1;
+            }
+
+            function JKQ()
+            {
+               if(cardnumber === 0) shape ='A';
+               else  if(cardnumber === 10) shape = 'J';
+               else if(cardnumber === 11) shape = 'Q';
+               else if(cardnumber === 12) shape = 'K';
+            }
+
+            function reset()
+            {
+                ace = 0;
+                player_card = 0;
+                Dplayer_card = 0;
+                moment_coin = 0;
+                moment_counting = 0;
+                moment_counting1 = 0;
+                dealer_card = 0;
+                check = 0;
+                shape ='';
+                cardnumber = 0;
+                betting = 0;
+                document.getElementById('CARD').value = '';
+                document.getElementById('DCard').value = '';
+                document.getElementById('DCardCounting').value = '';
+                document.getElementById('1').value = '';
+
+                document.getElementById('CardCounting').value = '';
+                document.getElementById('bet').value = '';
+            }
+            function blackJack()
+            {
+                if(player_card==21)
+                {
+                    document.getElementById('CardCounting').value = '★BLACKJACK!☆';
+                   //LUCKY!
+                    check = 0;
+                    document.getElementById('bet').value = '다시 하실 거면 배팅을 해주세요!'
+                    coin += betting*2.5;
+                    document.getElementById('RCoin') = coin;
+              }
+            }
+            function dealercard()
+            {
+                DCardseletor();
+                JKQ();
+                Dput();
+                shape = '';   
+                document.getElementById('DCardCounting').value = '';
+                document.getElementById('DCardCounting').value += Dplayer_card*1;
+            }
+            function Split()
+            {
+                check = 0;
+                while(15>=Dplayer_card)
+                {
+                    dealercard();    
+                }
+                
+              
+             
+                if(Dplayer_card < player_card || 21 < Dplayer_card) 
+                {
+                    document.getElementById('CardCounting').value = 'YOU WIN!';
+                    coin += betting*2;
+                    document.getElementById('RCoin').value = coin;
+
+                }
+                else  if(Dplayer_card > player_card || 21<player_card)
+                {
+                    document.getElementById('CardCounting').value = 'YOU LOSE!';
+                }
+                else{
+                    document.getElementById('CardCounting').value = 'DRAW';
+                    coin += betting;
+                    document.getElementById('RCoin').value = coin;
+
+                }
+
+            }
+    </script> 
+</html>
