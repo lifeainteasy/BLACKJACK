@@ -75,37 +75,35 @@
         function gameStart()
         {
 
-            moment_coin -= document.getElementById('bet').value;
-            if(moment_coin != 'NaN') 
+            moment_coin = document.getElementById('bet').value;
+            if(moment_coin === 'NaN') 
             {
                 reset();
             }
-            else if( moment_coin == 'NaN')
+            else if( moment_coin != 'NaN')
             {
-                coin -=moment_coin;
+                coin -= moment_coin;
                 if(coin < 0)
-            {
-                coin += document.getElementById('bet').value;
-                document.getElementById('bet').value = '너무많은 금액을 입력하셨습니다.';
-                reset();
-            } 
-            else {
-
-                betting = document.getElementById('bet').value*1;
-                document.getElementById('RCoin').value = coin;
-
-
-
-           if(betting !=0) 
                 {
-                            cardCounting();
-
-                       }   
-             else
-             {
-                 document.getElementById('bet').value='배팅금액을 입력해주세요!';
+                        coin += document.getElementById('bet').value;
+                        document.getElementById('bet').value = '너무많은 금액을 입력하셨습니다.';
+                        reset();
                 }
-            }
+                else
+                {
+                    betting = coin;
+                    document.getElementById('RCoin').value = coin;
+                
+                    if(betting !=0) 
+                    {
+                            cardCounting();
+                    }   
+
+                    else
+                    {
+                         document.getElementById('bet').value='배팅금액을 입력해주세요!';
+                    }
+                }
             }
          
              
