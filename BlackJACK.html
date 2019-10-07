@@ -2,8 +2,9 @@
 <html>
     <head>
         <meta charset="utf-16">
+        <link rel="stylesheet" href="css/style.css">
+
         <style>
-          
             body{
                 border-bottom: 1px solid black;
                 height: 400px;
@@ -14,9 +15,95 @@
                 position: absolute; left: 650px; bottom: 550px;
             }
             #player{
-                position: absolute; left: 650px; bottom: 5px;
+                position: absolute; left: 650px; bottom: 100px;
             }
-            
+            .button-wrapper {
+        display: inline-block;
+       /* margin: 20px 5px;
+        padding: 40px;*/
+    }
+    .dark-button,
+    .dark-button-2 {
+        background: #333;
+    }
+    .button {
+        background: #fff;
+        border: none;
+        padding: 2px;
+        cursor: pointer;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        transition: all .35s ease-in-out .35s;
+        margin: 0 auto;
+         width: 150px;
+        text-align: center;
+    }
+    .dark-button .button,
+    .dark-button .button span {
+        background: #36B4C7;
+        color: #fff;
+    }
+    .dark-button .button:after,
+    .dark-button .button:before,
+    .dark-button .button:hover span {
+        background: #fff;
+        color: #444;
+    } 
+    .dark-button-2 .button,
+    .dark-button-2 .button span {
+        background: #333;
+        color: #fff;
+    }
+    .dark-button-2 .button:after,
+    .dark-button-2 .button:before,
+    .dark-button-2 .button:hover span {
+        background: #fff;
+        color: #444;
+    } 
+    span {
+        display: block;
+       /*padding: 15px 30px; */
+        background: #fff;
+        z-index: 100;
+        position: relative;
+        transition: all .35s ease-in-out .35s;
+    }
+    .button:hover span {
+        background: #36B4C7;
+        color: #fff;
+        transition: all .35s ease-in-out .35s;
+    }
+    .button:after {
+        bottom: -100%;
+        right: -100%;
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: #36B4C7;
+        transition: all .35s ease-in-out .5s;
+    }
+    .button:hover:after {
+        right: 0;
+        bottom: 0;
+        transition: all ease-in-out .35s;
+    }
+    .button:before {
+        top: -100%;
+        left: -100%;
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: #36B4C7;
+        transition: all .35s ease-in-out .5s;
+    }
+    .button:hover:before {
+        left: 0;
+        top: 0;
+        transition: all ease-in-out .35s;
+    }
 
         </style>
         <title>☆WELCOME TO BLACKJACK!★</title>
@@ -26,21 +113,42 @@
         <input type = "text" value="가지고 있는 코인 : "style="background-color:transparent;border:0" disabled> 
         <input type=  "text" id = "RCoin" value="1000" style="background-color:transparent;border:0;text-align: left" disabled>
         <br>
-       
-
+    
+        
+        
          <input type="text" value="배팅금액 : " style="width: 60px;background-color:transparent;border:0;text-align:left;" disabled>
          <input type="text" onclick="reset()" id="bet" value="" style="text-align:left;">
-         <input type="button"onclick="gameStart()" value="배팅하기">
-         <br> 
+         <div class="light-button button-wrapper">
+            <div class="button">
+                <span onclick="gameStart()">
+                    배팅하기
+                </span>
+            </div>  
+        </div>
+        <br>
+         
          <input type="text" value="대출받을 돈(5백만원 이하) : " style="width: 1    60px;background-color:transparent;border:0;text-align:left;" disabled>         
          <input type="text" value="" id="minusmoney"> 
-         <input type="button" value="대출받기" onclick="eocnf()">
+         <div class="light-button button-wrapper">
+            <div class="button">
+                <span onclick="eocnf()">
+                    대출받기
+                </span>
+            </div>  
+        </div>
         <br>
          <input type="text" value="빛 : " style="width: 60px;background-color:transparent;border:0;text-align:left;" disabled>         
          <input type="text" id="summoneyminus" value =''style="width: 60px;background-color:transparent;border:0;text-align:left;" disabled>
          <br>
          <input type="text" id="rkvdmfqlc" >
-         <input type="button" value="빛갚기" onclick="qlcrkvrl()">
+         <div class="light-button button-wrapper">
+            <div class="button">
+                <span onclick="qlcrkvrl()">
+                    빛 갚기
+                </span>
+            </div>  
+        </div>
+         
         
         <div id = "dealer">
             <img src="class.jpg"  id="Dcard0" style="position: absolute; left:0px;bottom: 50px ; width: 50px; height: 70px;"> 
@@ -56,10 +164,9 @@
             <input type="text"  id="DCardCounting" disabled> 
             <input type = "text"id="HowMuchYOUbet" value ="배팅금액" style="position: absolute; left: 500px; bottom: 0px; width: 330px; height: 200px; padding:90px 280px 50px 100px;font-size: 50px">
             <input type = "text"id="1" value ="" style="background-color:transparent;border:0; position: absolute; left: 500px; bottom: 0px; width: 330px; height: 200px; padding:50px 00px 0px 150px;font-size: 40px;text-align: left;">
-
         </div>
         <div id = "player" >
-                
+                <div style="position: absolute; bottom: 50px;">  
              <img src="class.jpg"  id="card0" style="position: absolute; left:0px;width: 50px; height: 70px;"> 
               <img  src="class.jpg" id="card1" style="position: absolute; left:50px; width: 50px; height: 70px " >   
               <img  src="class.jpg" id="card2" style="position: absolute; left:100px; width: 50px; height: 70px;"> 
@@ -71,14 +178,27 @@
               <img   src="class.jpg" id="card8" style="position: absolute; left:400px; width: 50px; height: 70px " >   
               <img   src="class.jpg" id="card9" style="position: absolute; left:450px; width: 50px; height: 70px " >   
               <img   src="class.jpg" id="card10" style="position: absolute; left:500px; width: 50px; height: 70px " >   
-            
-               <input type="text"  id="CardCounting1" disabled>
-            
-               <input type="button" onclick="Hit()" value="HIT">    
+              <input type="text" disabled>
+            </div>
 
-               <input type="button"  onclick="Split()" value = "STAY"  style="margin: 100px;"> 
+              <div class="light-button button-wrapper" style="position: absolute; left: 200px">
+                <div class="button">
+                    <span onclick="Hit()">
+                        HIT
+                    </span>
+                </div>  
+            </div>
+            <div class="light-button button-wrapper"style="position: absolute; left: 400px">
+                <div class="button">
+                    <span onclick="Split()">
+                        Split
+                    </span>
+                </div>  
+                <br>
+                <input type="text"  id="CardCounting1" style="position: absolute; right:400px ;bottom: 20px;" disabled>
 
-        </div>
+            </div>
+
     </body>
     <script>
         var cardnum = -1;
@@ -229,11 +349,11 @@
               fcoin = coin
               moment_coin = document.getElementById('bet').value;
               cardnum = -1;
-              if(moment_coin === 'NaN' || moment_coin === '') 
+              if(typeof(moment_coin) === 'NaN' || moment_coin === '') 
                {
                     reset();
                }
-            else if( moment_coin != 'NaN' ||  0<moment_coin )
+            else if( moment_coin != 'NaN' &&  0<moment_coin )
             {
                 coin -= moment_coin;    
                 if(coin < 0)
