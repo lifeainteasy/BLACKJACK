@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>index</title>
+        <style>
+            .btn {
+    display: inline-block;
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: 500;
+        font-style: normal;
+         font-size: 0.625rem;
+        letter-spacing: 0.3em;
+        color: rgba(223,190,106,0.7);
+    border-radius: 0;
+    padding: 18px 80px 20px;
+    transition: all 0.7s ease-out;
+    background: linear-gradient(270deg, rgba(223,190,106,0.8), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
+    margin: 0.625rem;
+    border: none;
+    border: 1px solid rgba(223,190,106,0.3);
+    }
+
+    .btn:hover {
+    color: #fff;
+    border: 1px solid rgba(223,190,106,0);
+    color: white;
+    background-position: 99% 50%;
+    }
+
+    body {
+    background: #231f20;
+    color: #fff;
+    font-family: "Helvetica Neue", Helvetica, Arials, sans;
+    }
+
+
+
+
+
+    article {
+    height: 100vh;
+    }
+
+    body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    }
+  </style>
+    </head>
+   
+    <body>
+
+         <a class="btn" href="BlackJACK.html">
+                BLACKJACK
+          
+         </a>
+         <a class="btn" >
+            <div id = "app1" v-on:click = "message = `준비중`">
+            {{message}}
+        
+            </div>
+            </a>
+         <a class="btn" >
+            <div id = "app" v-on:click = "message = `준비중`">
+                    {{message}}
+             </div>
+         </a>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <script>
+     var app = new Vue({
+    el: '#app',
+     data: {
+    message: 'POKER'
+  }
+})
+
+var app1 = new Vue({
+    el: '#app1',
+     data: {
+    message: '섰다'
+  }
+})
+    </script>
+</html>
