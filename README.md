@@ -16,4 +16,6 @@
   - JavaScript
 
 ### 블랙잭 프로젝트 진행기
--blog naver.com
+- https://blog.naver.com/PostView.nhn?blogId=zofqofhtltm&Redirect=View&logNo=221696100027&categoryNo=10&isAfterWrite=true&isMrblogPost=false&isHappyBeanLeverage=true&contentLength=40367
+
+
