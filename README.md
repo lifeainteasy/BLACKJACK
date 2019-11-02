@@ -4,10 +4,16 @@
 
 
 <br><br>
-프로젝트 계획은 밑 사이트에서 확인하실 수 있습니다. <br>
+## 프로젝트 계획은 밑 사이트에서 확인하실 수 있습니다. <br>
 - 프로젝트 계획
   - https://zofqofhtltlm8015.github.io/BLACKJACK/blackjack.html
 - 프로젝트
   - https://zofqofhtltlm8015.github.io/BLACKJACK/BlackJACK.html
   
- -블래
+- 사용한 프로그래밍 언어
+  - HTML
+  - CSS
+  - JavaScript
+
+### 블랙잭 프로젝트 진행기
+-blog naver.com
