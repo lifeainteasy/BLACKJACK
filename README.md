@@ -19,3 +19,4 @@
 - https://blog.naver.com/PostView.nhn?blogId=zofqofhtltm&Redirect=View&logNo=221696100027&categoryNo=10&isAfterWrite=true&isMrblogPost=false&isHappyBeanLeverage=true&contentLength=40367
 
 
+Unhandled rejection SequelizeConnectionError: Unknown database 'react-nodebird'
