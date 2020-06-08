@@ -6,9 +6,9 @@
 <br><br>
 ## 프로젝트 계획은 밑 사이트에서 확인하실 수 있습니다. <br>
 - 프로젝트 계획
-  - https://zofqofhtltlm8015.github.io/BLACKJACK/blackjack.html
+  - https://zofqofhtltm8015.github.io/BLACKJACK/blackjack.html
 - 프로젝트
-  - https://zofqofhtltlm8015.github.io/BLACKJACK/BlackJACK.html
+  - https://zofqofhtltm8015.github.io/BLACKJACK/BlackJACK.html
   
 - 사용한 프로그래밍 언어
   - HTML
@@ -19,4 +19,3 @@
 - https://blog.naver.com/PostView.nhn?blogId=zofqofhtltm&Redirect=View&logNo=221696100027&categoryNo=10&isAfterWrite=true&isMrblogPost=false&isHappyBeanLeverage=true&contentLength=40367
 
 
-Unhandled rejection SequelizeConnectionError: Unknown database 'react-nodebird'
